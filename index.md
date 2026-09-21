@@ -8,7 +8,7 @@ description: Privacy policy for the AlarmVault Android app
 **Applies to:** AlarmVault for Android (package `com.sgot.alarmvault`)
 
 
-**Effective date:** 18 September 2026 · **Applies to app version:** 1.0
+**Effective date:** 21 September 2026 · **Applies to app version:** 1.1
 
 ## In short
 
@@ -16,7 +16,8 @@ AlarmVault keeps your data on your device. It has no account, no sign-in and no 
 and it does not send your alarm settings, your Secure Box contents or your Apps Box list anywhere.
 
 The only information AlarmVault sends off the device is approximate location for the optional
-weather section, and only if you allow it.
+weather section, and only if you allow it. If you use Send feedback, your own email app opens
+with a draft that you write and send yourself.
 
 ## Introduction
 
@@ -32,9 +33,9 @@ behalf.
 
 The app handles only what you give it or what it needs in order to work:
 
-- **Alarm settings** — the alarm time, whether it is on, its label, vibration, the snooze length,
-  and the ringtone or audio file you choose. A chosen audio file is stored as a reference to that
-  file, not as a copy of it.
+- **Alarm settings** — for each alarm you create: its time, whether it is on, its name, which days
+  of the week it repeats on, vibration, the snooze length, and the ringtone or audio file you
+  choose. A chosen audio file is stored as a reference to that file, not as a copy of it.
 - **Items you add to Secure Box** — videos, photos, PDFs and other files.
 - **Notes you write in Secure Box** — their title and body.
 - **Security material** — a salted verifier for your PIN, password or pattern and for your Recovery
@@ -61,6 +62,8 @@ Everything is kept in the app's own private storage area on the device:
 - Local preference files holding the security verifiers and the Apps Box list.
 - A local preference file recording which shortcuts you removed from the AlarmVault Home screen, so
   your layout survives a restart.
+- A local preference file recording whether Secure Box keeps its contents blurred until you
+  touch them.
 - A local preference file holding the last weather reading — a temperature and a condition word —
   for about an hour. Your coordinates are not stored.
 
@@ -80,10 +83,12 @@ Some information is kept unencrypted as ordinary metadata in the app's private l
 item's file name, file type, size, the date it was imported, and a checksum used to recognise a
 duplicate import.
 
-To play a video or open a PDF, the app writes a temporary decrypted copy into its own private cache.
-That copy is deleted when you close the viewer, and anything left behind by an unexpected shutdown
-is cleared the next time the app starts. Photos are decrypted in memory and are not written to disk
-in readable form.
+To play a video or open a PDF, the app writes a temporary decrypted copy into its own private
+cache. The same happens briefly for each video shown in the Secure Box list, so a picture from
+the video can be used in place of a filename; that copy is deleted as soon as the picture has
+been taken. A viewer copy is deleted when you close the viewer, and anything left behind by an
+unexpected shutdown is cleared the next time the app starts. Photos are decrypted in memory and
+are not written to disk in readable form.
 
 This is local at-rest encryption. It is deliberately **not** described as end-to-end encryption,
 because there is no remote party involved.
@@ -193,6 +198,11 @@ Data leaves the app only when you move it yourself. Exporting an item from Secur
 decrypted copy to the location you choose. Once exported, that copy is outside the app's protection
 and is subject to whatever else can read that location.
 
+The alarm screen also has a **Send feedback** option. It opens your own email app with a message
+addressed to the developer and pre-filled with the app version, your Android version and your
+phone model, so you do not have to go looking for them. Nothing is sent automatically: the draft
+is yours to read, edit or discard, and the app neither sees nor keeps a copy of what you send.
+
 ## Internet and network use
 
 The app makes **exactly one kind of network request**: the optional weather section on the
@@ -228,8 +238,9 @@ Your data stays on the device until you remove it:
 - Deleting an item from Secure Box deletes its encrypted file and its database record.
 - Deleting a note removes it from the database.
 - Removing an app from Apps Box removes its package name from the saved list.
-- Temporary decrypted copies made for the video and PDF viewers are deleted when the viewer closes,
-  and any left behind are cleared the next time the app starts.
+- Temporary decrypted copies made for the video and PDF viewers, and for video pictures in the
+  list, are deleted as soon as they have served their purpose, and any left behind are cleared
+  the next time the app starts.
 - Adding a shortcut back to Home removes it from the list of shortcuts you had removed.
 - The cached weather reading is replaced about an hour after it was fetched.
 
@@ -248,8 +259,9 @@ features.
 ## Children's privacy
 
 The app has no account system and does not knowingly collect personal information from anyone,
-including children. It does not ask for age or identity. The only thing it ever sends off the device
-is an approximate location for the optional weather section, and only if you allow it.
+including children. It does not ask for age or identity. The only thing the app itself ever sends
+off the device is an approximate location for the optional weather section, and only if you allow
+it. The feedback option sends nothing on its own; it opens an email for you to write and send.
 
 ## Active development
 
