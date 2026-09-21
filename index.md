@@ -8,7 +8,7 @@ description: Privacy policy for the AlarmVault Android app
 **Applies to:** AlarmVault for Android (package `com.sgot.alarmvault`)
 
 
-**Effective date:** 21 September 2026 · **Applies to app version:** 1.1
+**Effective date:** 21 September 2026 · **Applies to app version:** 1.2
 
 ## In short
 
@@ -60,8 +60,11 @@ Everything is kept in the app's own private storage area on the device:
 - A local database holding alarm settings, note contents in encrypted form, and metadata for Secure
   Box items.
 - Local preference files holding the security verifiers and the Apps Box list.
-- A local preference file recording which shortcuts you removed from the AlarmVault Home screen, so
-  your layout survives a restart.
+- A local preference file recording which shortcuts you put on the AlarmVault Home screen and which
+  of the starter ones you removed, so your layout survives a restart.
+- A local count of how many times you have opened each app from AlarmVault, used only to put the
+  ones you open most at the top of the app drawer. It is not the phone-wide usage statistics, it
+  covers only taps inside AlarmVault, and it never leaves the device.
 - A local preference file recording whether Secure Box keeps its contents blurred until you
   touch them.
 - A local preference file holding the last weather reading — a temperature and a condition word —
@@ -134,6 +137,17 @@ Two further permissions exist only for the **optional weather section** on the H
 
 The app does **not** request the contacts, microphone or camera permissions.
 
+Two further permissions are added automatically by the Android libraries the app is built on,
+rather than requested by AlarmVault itself. They appear in the Google Play permission list, so they
+are named here too:
+
+- **View network connections** — added by the media library that powers the Secure Box video
+  player. It lets that library check whether a connection exists. AlarmVault plays only files
+  already on your device and never streams anything.
+- **Use fingerprint** — the older form of the biometric permission, added by the AndroidX biometric
+  library so that optional biometric unlock also works on Android 9 and earlier. It covers the same
+  unlock as **Use biometric** above, and no fingerprint data ever reaches the app.
+
 When you pick an audio file for the alarm, the app keeps read access to that file so it can still
 play it hours later. It stores a reference to the file, not a copy of it.
 
@@ -155,6 +169,11 @@ then shows its own home screen and app drawer, and leaves your protected apps ou
 visible in Android Settings, in search, and in any other launcher you switch to. This is **hiding
 from AlarmVault's own home screen — not Android system-level hiding** — and the app does not
 describe it as anything more.
+
+One more thing happens when you open a protected app from inside Apps Box: it is started in a way
+that keeps it out of the Recents list, so its name and a picture of it are not left on the recent
+apps screen for the next person who presses that key. The app itself is untouched and is still
+reachable everywhere else described above.
 
 Selecting the Home app is always done in Android's own interface. AlarmVault cannot set or change
 the Home app itself, and never attempts to. You can switch your previous home screen back at any
