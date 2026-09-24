@@ -8,7 +8,7 @@ description: Privacy policy for the AlarmVault Android app
 **Applies to:** AlarmVault for Android (package `com.sgot.alarmvault`)
 
 
-**Effective date:** 21 September 2026 · **Applies to app version:** 1.2
+**Effective date:** 24 September 2026 · **Applies to app version:** 1.3
 
 ## In short
 
@@ -92,6 +92,13 @@ the video can be used in place of a filename; that copy is deleted as soon as th
 been taken. A viewer copy is deleted when you close the viewer, and anything left behind by an
 unexpected shutdown is cleared the next time the app starts. Photos are decrypted in memory and
 are not written to disk in readable form.
+
+Opening a ZIP, RAR or 7z file in Secure Box works the same way, because those formats have to be
+read back and forth rather than straight through: the archive is decrypted into that same private
+cache, its contents are encrypted into Secure Box one at a time as they come out, and the
+temporary copy is deleted when the work finishes, including when it fails part way. Compressing
+files into a new ZIP does the same in reverse. That cache belongs to AlarmVault alone; no other
+app on the phone can read it, and nothing is written anywhere you have not asked for.
 
 This is local at-rest encryption. It is deliberately **not** described as end-to-end encryption,
 because there is no remote party involved.
@@ -250,6 +257,21 @@ Apart from that one request, the app contains no other networking, server or clo
 account, no analytics, no crash-reporting service, no advertising, and no cloud service or hosted
 database operated for the app.
 
+## Third-party code included in the app
+
+The app is built on Google's own Android and Jetpack libraries, and on three additional open-source
+libraries used purely to read and write archive files on the device. **None of them sends anything
+anywhere**; they are file-format code and have no network access of their own.
+
+- **Apache Commons Compress** and **XZ for Java**, under the Apache License 2.0, used to open 7z
+  files.
+- **junrar**, under the UnRAR licence, used to open RAR files. As that licence requires, it is
+  stated here and in the in-app guide that **this code may not be used to develop a RAR (WinRAR)
+  compatible archiver**. It can only read RAR files; no app can create them, which is why
+  compressing files in Secure Box offers ZIP and 7z but never RAR.
+
+ZIP files are handled by the archive code built into Android itself, with no additional library.
+
 ## Data retention and deletion
 
 Your data stays on the device until you remove it:
@@ -257,9 +279,11 @@ Your data stays on the device until you remove it:
 - Deleting an item from Secure Box deletes its encrypted file and its database record.
 - Deleting a note removes it from the database.
 - Removing an app from Apps Box removes its package name from the saved list.
-- Temporary decrypted copies made for the video and PDF viewers, and for video pictures in the
-  list, are deleted as soon as they have served their purpose, and any left behind are cleared
-  the next time the app starts.
+- Temporary decrypted copies made for the video and PDF viewers, for video pictures in the list,
+  and for extracting or creating an archive, are deleted as soon as they have served their
+  purpose, and any left behind are cleared the next time the app starts.
+- Deleting an extracted folder is just deleting the items in it; the folder is only the name they
+  share and disappears once the last one is gone.
 - Adding a shortcut back to Home removes it from the list of shortcuts you had removed.
 - The cached weather reading is replaced about an hour after it was fetched.
 
