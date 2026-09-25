@@ -8,7 +8,7 @@ description: Privacy policy for the AlarmVault Android app
 **Applies to:** AlarmVault for Android (package `com.sgot.alarmvault`)
 
 
-**Effective date:** 24 September 2026 · **Applies to app version:** 1.3
+**Effective date:** 25 September 2026 · **Applies to app version:** 1.3
 
 ## In short
 
