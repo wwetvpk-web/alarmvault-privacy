@@ -206,6 +206,10 @@ For the fixed row at the bottom of the Home screen, AlarmVault also asks Android
 set as your default phone, messaging, browser and camera apps, so the row matches your device
 instead of assuming a particular brand.
 
+AlarmVault also asks Android which app is currently your home screen, and reads that app's name so
+Apps Box can show it to you. That screen states plainly whether AlarmVault is your home app or
+another one is, and naming it is what lets you check the answer rather than take it on trust.
+
 To be clear about what that does and does not mean: AlarmVault learns only which app fills each of
 those roles. It does **not** read your messages, your calls or your call history, your contacts,
 your photos or any account information, and it holds no permission that would let it.
