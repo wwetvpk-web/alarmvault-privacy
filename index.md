@@ -2,13 +2,12 @@
 title: AlarmVault Privacy Policy
 description: Privacy policy for the AlarmVault Android app
 ---
-
 # AlarmVault — Privacy Policy
 
 **Applies to:** AlarmVault for Android (package `com.sgot.alarmvault`)
 
 
-**Effective date:** 25 September 2026 · **Applies to app version:** 1.3
+**Effective date:** 26 September 2026 · **Applies to app version:** 1.4
 
 ## In short
 
@@ -217,6 +216,18 @@ your photos or any account information, and it holds no permission that would le
 All of this is read on the device, used to draw the screen, and never sent anywhere. Only the
 package names you choose to protect in Apps Box, and the shortcuts you remove from Home, are written
 down at all.
+
+### Searching in the app drawer
+
+The app drawer has a search box. What you type is matched, on the device, against the names of the
+apps already listed there. Nothing is sent anywhere while you type, and no suggestions are fetched
+from any search service.
+
+When nothing on your phone matches what you typed, the drawer offers to hand those words to an app
+that can search for them — Google, YouTube, Maps, the Play Store or Contacts. The words leave
+AlarmVault only if you tap one of those, and then they go to the app you chose; AlarmVault sends
+nothing itself and keeps no record of what you searched for. A hand-off is offered only for an app
+you actually have, and never for one you have protected in Apps Box.
 
 ## Data sharing
 
