@@ -7,7 +7,7 @@ description: Privacy policy for the AlarmVault Android app
 **Applies to:** AlarmVault for Android (package `com.sgot.alarmvault`)
 
 
-**Effective date:** 26 September 2026 · **Applies to app version:** 1.4
+**Effective date:** 27 September 2026 · **Applies to app version:** 1.5
 
 ## In short
 
@@ -35,7 +35,7 @@ The app handles only what you give it or what it needs in order to work:
 - **Alarm settings** — for each alarm you create: its time, whether it is on, its name, which days
   of the week it repeats on, vibration, the snooze length, and the ringtone or audio file you
   choose. A chosen audio file is stored as a reference to that file, not as a copy of it.
-- **Items you add to Secure Box** — videos, photos, PDFs and other files.
+- **Items you add to Secure Box** — videos, photos, audio, PDFs and other files.
 - **Notes you write in Secure Box** — their title and body.
 - **Security material** — a salted verifier for your PIN, password or pattern and for your Recovery
   Key. Neither the credential nor the Recovery Key itself is stored.
@@ -85,12 +85,12 @@ Some information is kept unencrypted as ordinary metadata in the app's private l
 item's file name, file type, size, the date it was imported, and a checksum used to recognise a
 duplicate import.
 
-To play a video or open a PDF, the app writes a temporary decrypted copy into its own private
-cache. The same happens briefly for each video shown in the Secure Box list, so a picture from
-the video can be used in place of a filename; that copy is deleted as soon as the picture has
-been taken. A viewer copy is deleted when you close the viewer, and anything left behind by an
-unexpected shutdown is cleared the next time the app starts. Photos are decrypted in memory and
-are not written to disk in readable form.
+To play a video or a sound file, or to open a PDF, the app writes a temporary decrypted copy into
+its own private cache. The same happens briefly for each video shown in the Secure Box list, so a
+picture from the video can be used in place of a filename; that copy is deleted as soon as the
+picture has been taken. A viewer copy is deleted when you close the viewer, and anything left
+behind by an unexpected shutdown is cleared the next time the app starts. Photos are decrypted in
+memory and are not written to disk in readable form.
 
 Opening a ZIP, RAR or 7z file in Secure Box works the same way, because those formats have to be
 read back and forth rather than straight through: the archive is decrypted into that same private
@@ -294,7 +294,7 @@ Your data stays on the device until you remove it:
 - Deleting an item from Secure Box deletes its encrypted file and its database record.
 - Deleting a note removes it from the database.
 - Removing an app from Apps Box removes its package name from the saved list.
-- Temporary decrypted copies made for the video and PDF viewers, for video pictures in the list,
+- Temporary decrypted copies made for the video, audio and PDF viewers, for video pictures in the list,
   and for extracting or creating an archive, are deleted as soon as they have served their
   purpose, and any left behind are cleared the next time the app starts.
 - Deleting an extracted folder is just deleting the items in it; the folder is only the name they
