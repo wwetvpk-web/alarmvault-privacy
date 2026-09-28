@@ -7,7 +7,7 @@ description: Privacy policy for the AlarmVault Android app
 **Applies to:** AlarmVault for Android (package `com.sgot.alarmvault`)
 
 
-**Effective date:** 27 September 2026 · **Applies to app version:** 1.5
+**Effective date:** 28 September 2026 · **Applies to app version:** 1.6
 
 ## In short
 
@@ -40,8 +40,10 @@ The app handles only what you give it or what it needs in order to work:
 - **Security material** — a salted verifier for your PIN, password or pattern and for your Recovery
   Key. Neither the credential nor the Recovery Key itself is stored.
 - **Apps Box** — the package names of the apps you have imported.
-- **Weather** — if you allow it, an approximate location used only to look up current conditions
-  for the Home screen, plus the last reading cached for about an hour. No location history is kept.
+- **Weather** — if you allow it, an approximate location used only to look up the weather for the
+  Home screen and the forecast behind it, plus that answer cached for about an hour. It is one
+  request either way: the forecast is read from the same reply, not asked for separately. No
+  location history is kept.
 
 To let you choose apps in Apps Box, the app asks Android for the list of installed apps that have a
 launcher icon. That list is read on the device to display it, and only the package names you import
@@ -67,7 +69,8 @@ Everything is kept in the app's own private storage area on the device:
 - A local preference file recording whether Secure Box keeps its contents blurred until you
   touch them.
 - A local preference file holding the last weather reading — a temperature and a condition word —
-  for about an hour. Your coordinates are not stored.
+  and a cached copy of the weather service's reply, which is what the hourly and ten-day forecast
+  is read from. Both are kept for about an hour. Your coordinates are not stored in either.
 
 Android keeps this private storage isolated from other apps. Nothing is written to shared or public
 storage unless you explicitly export it.
@@ -136,7 +139,7 @@ The app requests the following Android permissions, each used only for the alarm
 
 Two further permissions exist only for the **optional weather section** on the Home screen:
 
-- **Internet** — to ask a public weather service for current conditions.
+- **Internet** — to ask a public weather service for the current conditions and the forecast.
 - **Approximate location** — to know roughly where to ask about. Only the *coarse* permission is
   requested, **never precise location** and **never background location**, so the app cannot read
   your position while it is closed.
