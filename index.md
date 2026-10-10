@@ -6,17 +6,23 @@ description: Privacy policy for the AlarmVault Android app
 
 **Applies to:** AlarmVault for Android (package `com.sgot.alarmvault`)
 
-
-**Effective date:** 28 September 2026 · **Applies to app version:** 1.6
+**Effective date:** 10 October 2026 · **Applies to app version:** 1.7
 
 ## In short
 
-AlarmVault keeps your data on your device. It has no account, no sign-in and no server behind it,
-and it does not send your alarm settings, your Secure Box contents or your Apps Box list anywhere.
+AlarmVault keeps your alarms, your Secure Box files and notes, and your Apps Box list on your
+device. It has no account, no sign-in and no server behind it, and it never sends any of those
+anywhere.
 
-The only information AlarmVault sends off the device is approximate location for the optional
-weather section, and only if you allow it. If you use Send feedback, your own email app opens
-with a draft that you write and send yourself.
+From version 1.7 the app shows ads unless you have Premium. They come from **Google AdMob**, which
+receives information about your device in order to show and measure them — see *Advertising*
+below. Ads appear only before the Secure Box or Apps Box lock screen, and as rewarded ads that you
+start yourself; never inside your vaults. Premium is sold through **Google Play**, which handles
+the payment.
+
+Apart from that, AlarmVault sends approximate location for the optional weather section, and only
+if you allow it. If you use Send feedback, your own email app opens with a draft that you write
+and send yourself.
 
 ## Introduction
 
@@ -24,9 +30,10 @@ AlarmVault is an Android app that combines an alarm clock with **Secure Box**, a
 files and notes that are encrypted on the device, and **Apps Box**, a separate protected area with
 its own lock.
 
-This policy describes how the app handles information as it works today. The app runs entirely on
-your device: there is no account to create, nothing to sign in to, and no service operated on your
-behalf.
+This policy describes how the app handles information as it works today. The app's own features run
+entirely on your device: there is no account to create, nothing to sign in to, and no service
+operated by the developer. Ads are provided by Google AdMob and the Premium subscription by Google
+Play, as described below.
 
 ## Information and data the app handles
 
@@ -44,6 +51,10 @@ The app handles only what you give it or what it needs in order to work:
   Home screen and the forecast behind it, plus that answer cached for about an hour. It is one
   request either way: the forecast is read from the same reply, not asked for separately. No
   location history is kept.
+- **Premium and ads** — whether you have Premium, when Premium earned by watching ads ends, how many
+  ads you have watched towards the next reward, when the last ad before a vault was shown (so that
+  another is not shown within three minutes), and whether the one-time Premium screen has been
+  shown.
 
 To let you choose apps in Apps Box, the app asks Android for the list of installed apps that have a
 launcher icon. That list is read on the device to display it, and only the package names you import
@@ -51,7 +62,8 @@ are saved.
 
 The app does not ask for your name, email address, phone number or contacts, and it has no profile
 or account attached to you. Approximate location is used only for the optional weather section
-described below, and only with your permission.
+described below, and only with your permission. Google AdMob and Google Play process information
+under Google's own privacy policy, as described under *Advertising* and *AlarmVault Premium*.
 
 ## How data is stored
 
@@ -71,6 +83,8 @@ Everything is kept in the app's own private storage area on the device:
 - A local preference file holding the last weather reading — a temperature and a condition word —
   and a cached copy of the weather service's reply, which is what the hourly and ten-day forecast
   is read from. Both are kept for about an hour. Your coordinates are not stored in either.
+- A local preference file holding the Premium and ads details listed above. It holds no payment
+  details: Google Play keeps those.
 
 Android keeps this private storage isolated from other apps. Nothing is written to shared or public
 storage unless you explicitly export it.
@@ -120,6 +134,9 @@ because there is no remote party involved.
   recents preview while they are open. The alarm screens are not restricted this way.
 - Apps Box re-locks whenever the app leaves the foreground. Secure Box does the same by default,
   and you can switch that off in Security settings.
+- The ad shown before a vault comes before its lock screen and does not change it. The PIN,
+  password, pattern or biometric check is never skipped, and the vault is still locked while the ad
+  is on screen.
 
 ## Alarms, notifications and device permissions
 
@@ -152,10 +169,24 @@ are named here too:
 
 - **View network connections** — added by the media library that powers the Secure Box video
   player. It lets that library check whether a connection exists. AlarmVault plays only files
-  already on your device and never streams anything.
+  already on your device and never streams anything. From version 1.7 AlarmVault also asks for it
+  itself, as described next.
 - **Use fingerprint** — the older form of the biometric permission, added by the AndroidX biometric
   library so that optional biometric unlock also works on Android 9 and earlier. It covers the same
   unlock as **Use biometric** above, and no fingerprint data ever reaches the app.
+
+From version 1.7, three permissions exist for ads and Premium:
+
+- **View network connections** — to check whether there is a working internet connection before a
+  vault opens. Without one, no ad is attempted and the lock screen opens at once.
+- **Advertising ID** — added by the Google Mobile Ads SDK, so that ads can use the advertising ID
+  Android provides. You can reset or delete that ID at any time in Android's own settings.
+- **Google Play billing** — added by the Google Play Billing Library, so that the Premium
+  subscription can be bought through Google Play.
+
+The Google Mobile Ads SDK also adds Android's own **ad services** permissions (ad ID, attribution
+and topics), which belong to Android's newer privacy-preserving ad features. Where a phone has those
+features, they can be switched off in Android's ad privacy settings.
 
 When you pick an audio file for the alarm, the app keeps read access to that file so it can still
 play it hours later. It stores a reference to the file, not a copy of it.
@@ -232,11 +263,65 @@ AlarmVault only if you tap one of those, and then they go to the app you chose; 
 nothing itself and keeps no record of what you searched for. A hand-off is offered only for an app
 you actually have, and never for one you have protected in Apps Box.
 
+## Advertising
+
+From version 1.7, AlarmVault shows ads from **Google AdMob**, a service of Google. With Premium, the
+ad before a vault is not shown.
+
+**Where ads appear, and nowhere else:**
+
+- One full-screen ad before the Secure Box or Apps Box lock screen, when you are online and do not
+  have Premium. The vault is still locked while the ad is on screen; the ad comes first and the
+  normal lock screen follows. After an ad, opening a vault again within three minutes shows no
+  second one. Without an internet connection no ad is attempted and the lock screen opens at once.
+- Rewarded ads on the Premium screen, which play only when you tap the button that names the
+  reward — for example "Watch ad 2 of 3 for 1 day".
+
+Ads are never shown inside Secure Box or Apps Box, on the alarm or its ringing screen, or on the
+AlarmVault Home screen. The ad code has no access to your Secure Box files, your notes, your alarms
+or your Apps Box list.
+
+**What Google receives.** To choose, show and measure ads and to prevent fraud, the Google Mobile
+Ads SDK collects information from your device and sends it to Google. This includes your IP address,
+from which an approximate location can be worked out; the advertising ID or app set ID; the device
+model and Android version; information about the app; your interactions with the ads, such as
+whether an ad was shown or tapped; and diagnostic information about the SDK itself. AlarmVault does
+not receive this information, and it sends Google nothing about your vaults, alarms or apps. Google
+handles the information under its own privacy policy, https://policies.google.com/privacy, and
+explains how it uses information from apps that show its ads at
+https://policies.google.com/technologies/partner-sites.
+
+**Your choices.** In the European Economic Area, the United Kingdom and Switzerland, Google's consent
+message appears when the app starts, and personalised ads are shown only if you agree. In US states
+with their own privacy laws, the same kind of message lets you opt out of the sale or sharing of
+your information for advertising. Wherever either applies, an **Ad privacy choices** row appears on
+the alarm screen so that you can change your answer at any time. Everywhere, you can reset or delete
+your advertising ID in Android's settings.
+
+## AlarmVault Premium
+
+Premium switches off the ad before Secure Box and Apps Box. Nothing else in the app depends on it:
+every feature works the same with or without Premium. There are three ways to get it:
+
+- **A subscription**, monthly or yearly, bought through **Google Play**. Google Play takes the
+  payment and keeps your payment details; AlarmVault never sees them. The app learns only whether
+  the subscription is active, and confirms the purchase to Google Play from your phone. It has no
+  server of its own, so nothing about the purchase is sent anywhere else. You can cancel at any time
+  in Google Play → Subscriptions, and Google's own terms and privacy policy apply to the payment.
+- **Watching rewarded ads** — three ads earn one day of Premium and fifteen ads earn seven days.
+  This time is counted on the phone and kept in the local preference file described above.
+- **A Google Play promo code** from the developer, which gives Premium for good. It is redeemed in
+  Google Play and handled exactly like a purchase: the app learns only that your account owns it.
+
 ## Data sharing
 
-The app does not send your data to the developer or to anyone else. It contains **no analytics, no
-crash-reporting service, no advertising and no advertising identifier**, and your data is not sold
-or shared.
+AlarmVault does not send your data to the developer. It contains **no analytics and no
+crash-reporting service of its own**, and the developer does not sell your data.
+
+The only other parties that receive information from the app are the ones this policy describes:
+Google, through the ads and, when you buy Premium, through Google Play; and MET Norway, for the
+optional weather. None of them receives anything from your Secure Box, your notes, your alarms or
+your Apps Box list.
 
 Data leaves the app only when you move it yourself. Exporting an item from Secure Box writes a
 decrypted copy to the location you choose. Once exported, that copy is outside the app's protection
@@ -249,8 +334,9 @@ is yours to read, edit or discard, and the app neither sees nor keeps a copy of 
 
 ## Internet and network use
 
-The app makes **exactly one kind of network request**: the optional weather section on the
-AlarmVault Home screen.
+AlarmVault itself makes **one kind of network request**: the optional weather section on the
+AlarmVault Home screen, described here. The ad and billing libraries described under *Advertising*
+and *AlarmVault Premium* connect to Google on their own.
 
 If you have granted approximate location, the Home screen sends an approximate position — rounded
 to about a kilometre — to **MET Norway (api.met.no)** to obtain the current temperature and
@@ -271,15 +357,26 @@ Home screen shows the weather as unavailable and works normally.
 Weather data is provided by MET Norway under the Creative Commons Attribution 4.0 licence, which is
 why the Home screen credits them beneath the reading.
 
-Apart from that one request, the app contains no other networking, server or cloud code. There is no
-account, no analytics, no crash-reporting service, no advertising, and no cloud service or hosted
-database operated for the app.
+Apart from the weather request and the Google services above, the app contains no other networking,
+server or cloud code. There is no account, no analytics or crash-reporting service of its own, and
+no cloud service or hosted database operated for the app.
 
 ## Third-party code included in the app
 
-The app is built on Google's own Android and Jetpack libraries, and on three additional open-source
-libraries used purely to read and write archive files on the device. **None of them sends anything
-anywhere**; they are file-format code and have no network access of their own.
+The app is built on Google's own Android and Jetpack libraries. From version 1.7 it also includes
+three Google libraries that do connect to Google:
+
+- **Google Mobile Ads SDK** (AdMob), which requests and shows ads, as described under
+  *Advertising*.
+- **Google User Messaging Platform**, which shows Google's consent message where the law requires
+  one, and keeps your answer on the device.
+- **Google Play Billing Library**, which talks to the Google Play app on your phone to sell the
+  Premium subscription, and sends Google diagnostic information about how the library itself is
+  working.
+
+Three further open-source libraries are used purely to read and write archive files on the device.
+**None of them sends anything anywhere**; they are file-format code and have no network access of
+their own.
 
 - **Apache Commons Compress** and **XZ for Java**, under the Apache License 2.0, used to open 7z
   files.
@@ -304,6 +401,10 @@ Your data stays on the device until you remove it:
   share and disappears once the last one is gone.
 - Adding a shortcut back to Home removes it from the list of shortcuts you had removed.
 - The cached weather reading is replaced about an hour after it was fetched.
+- Premium earned by watching ads simply runs out when its time is up.
+
+Information that Google collects through the ads, or through Google Play when you buy Premium, is
+kept under Google's own retention rules. AlarmVault never holds it, so it cannot see or delete it.
 
 Uninstalling the app removes its private storage, including the encrypted Secure Box files, the
 local database and the preference files. Because the encryption key lives in the Android Keystore
@@ -319,10 +420,12 @@ features.
 
 ## Children's privacy
 
-The app has no account system and does not knowingly collect personal information from anyone,
-including children. It does not ask for age or identity. The only thing the app itself ever sends
-off the device is an approximate location for the optional weather section, and only if you allow
-it. The feedback option sends nothing on its own; it opens an email for you to write and send.
+AlarmVault is intended for adults and is listed on Google Play for users aged 18 and over. The app
+has no account system, does not ask for age or identity, and does not knowingly collect personal
+information from children. Its ads are not directed at children. Apart from the advertising and
+Google Play services described above, the only thing the app sends off the device is an approximate
+location for the optional weather section, and only if you allow it. The feedback option sends
+nothing on its own; it opens an email for you to write and send.
 
 ## Active development
 
